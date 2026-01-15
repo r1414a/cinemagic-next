@@ -1,0 +1,1 @@
+export const movieRated = ["G", "PG", "PG-13", "R", "TV-MA", "M", "GP", "TV-G", "TV-14", "TV-Y7", "AO"];
