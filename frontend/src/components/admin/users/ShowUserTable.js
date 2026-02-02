@@ -9,6 +9,13 @@ const users = [
     profileImage: "https://randomuser.me/api/portraits/women/11.jpg",
     role: "admin",
   },
+  {
+    name: "Rohit Mehta",
+    email: "rohit.mehta@gmail.com",
+    mobile: "9827662354",
+    profileImage: "https://randomuser.me/api/portraits/men/11.jpg",
+    role: "user",
+  },
 ]
 
 export default function ShowUserTable() {

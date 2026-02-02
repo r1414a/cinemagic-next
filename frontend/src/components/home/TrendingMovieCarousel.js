@@ -9,7 +9,8 @@ import { useRef } from "react";
 import MainHeading from "../MainHeading";   
 import Link from "next/link";
 import FiveStars from "../movie-related/FiveStars";
-import { Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
+import { Button } from "../ui/button";
 
 export default function TrendingMovieCarousel({data}){
      const trendingPrevRef = useRef(null);
@@ -66,6 +67,7 @@ export default function TrendingMovieCarousel({data}){
           >
             {data.map((movie) => (
                 <SwiperSlide key={movie.id}>
+                  <Button className="absolute left-0 bg-transparent"><Heart stroke="#FEE505"/></Button>
                   <Link href={`/movie/${movie.id}`}>
                     <img
                       className="w-full"

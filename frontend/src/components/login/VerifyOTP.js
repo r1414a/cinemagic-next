@@ -8,6 +8,8 @@ import { Spinner } from "@/components/ui/spinner";
 import { loginVerifyOtp } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
 import { customErrorToast, customSuccessToast } from "../ui/toast/customToast";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/lib/features/auth/authSlice";
 
 const initialState = {
     success: false,
@@ -16,6 +18,7 @@ const initialState = {
 
 export default function VerifyOTP({ email }) {
     const router = useRouter();
+    const dispatch = useDispatch();
     const [otp, setOtp] = useState("");
     console.log(otp);
     const [state, action, pending] = useActionState(loginVerifyOtp, initialState)
@@ -25,6 +28,7 @@ export default function VerifyOTP({ email }) {
     
             if (state.success) {
                 customSuccessToast(state.message)
+                dispatch(setUser(state.data))
                 if(state.data.role === 'user'){
                     router.replace('/');
                 }else{

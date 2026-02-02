@@ -1,7 +1,17 @@
+"use client";
+
+import { selectUser } from "@/lib/features/auth/authSlice";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+    const {user,isAuthticated, loading} = useSelector(selectUser);
+    console.log(user)
+
+    if (loading) {
+  return null;
+}
     return (
         <nav className={` z-999 fixed w-full px-4 lg:px-0 top-0 start-0 bg-blue/80 backdrop-blur-md 
       }`}>
@@ -34,10 +44,10 @@ export default function Navbar() {
 
                         <li>
                             <Link
-                                href={"/login"}
+                                href={isAuthticated ? "/account" : "/login"}
                                 className="font-semibold hover:underline hover:underline-offset-4 cursor-pointer block py-2 px-3 text-black md:text-white "
                             >
-                                Login/Signup
+                                {isAuthticated ? 'Account' : 'Login/Signup'}
                             </Link>
                         </li>
                     </ul>
